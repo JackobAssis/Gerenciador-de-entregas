@@ -4,20 +4,24 @@ function salvarPedidos() {
   localStorage.setItem('pedidos', JSON.stringify(pedidos));
 }
 
-function adicionarPedido() {
+function adicionarProdutoAoCliente() {
   const cliente = document.getElementById('cliente').value.trim();
-  const produto = document.getElementById('produto').value.trim();
-  const quantidade = parseInt(document.getElementById('quantidade').value);
+  if (!cliente) return alert('Informe o nome do cliente antes de adicionar produtos.');
 
-  if (!cliente || !produto || isNaN(quantidade) || quantidade <= 0) return alert('Preencha todos os campos corretamente.');
+  const produto = prompt("Nome do produto:");
+  if (!produto) return;
+
+  const quantidadeStr = prompt(`Quantidade de ${produto}:`);
+  const quantidade = parseInt(quantidadeStr);
+
+  if (isNaN(quantidade) || quantidade <= 0) {
+    alert("Quantidade inválida.");
+    return;
+  }
 
   pedidos.push({ cliente, produto, quantidade });
   salvarPedidos();
   atualizarTela();
-
-  document.getElementById('cliente').value = '';
-  document.getElementById('produto').value = '';
-  document.getElementById('quantidade').value = '';
 }
 
 function atualizarTela() {
@@ -31,13 +35,13 @@ function atualizarTela() {
     pedidosPorCliente[p.cliente].push({ produto: p.produto, quantidade: p.quantidade });
   });
 
-  // Atualizar resumo geral
+  // Resumo geral
   const resumoDiv = document.getElementById('resumo-geral');
   resumoDiv.innerHTML = Object.entries(resumo).map(
     ([produto, qtd]) => `<p><strong>${produto}:</strong> ${qtd} unidades</p>`
   ).join('');
 
-  // Atualizar pedidos por cliente
+  // Pedidos por cliente
   const listaPedidos = document.getElementById('lista-pedidos');
   listaPedidos.innerHTML = Object.entries(pedidosPorCliente).map(([cliente, itens]) => {
     const produtos = itens.map(p => `${p.produto} (${p.quantidade})`).join(', ');

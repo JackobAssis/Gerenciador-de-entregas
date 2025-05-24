@@ -2,8 +2,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 1rem;
-  background: #f9f9f9;
-  color: #333;
+  background: #383737;
+  color: #141414;
 }
 
 h1, h2 {
@@ -20,7 +20,7 @@ input, button {
 
 button {
   background-color: #0077cc;
-  color: white;
+  color: rgb(160, 151, 151);
   border: none;
   cursor: pointer;
 }
@@ -32,7 +32,7 @@ button:hover {
 section {
   margin-top: 2rem;
   padding: 1rem;
-  background: white;
+  background: rgb(148, 143, 143);
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
 }
