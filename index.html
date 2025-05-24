@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Entregas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h1>Gerenciador de Entregas</h1>
+
+  <section id="form-section">
+    <h2>Adicionar Pedido</h2>
+    <input type="text" id="cliente" placeholder="Nome do Cliente" required>
+    <input type="text" id="produto" placeholder="Produto" required>
+    <input type="number" id="quantidade" placeholder="Quantidade" required>
+    <button onclick="adicionarPedido()">Adicionar</button>
+  </section>
+
+  <section id="resumo-section">
+    <h2>Resumo de Carregamento</h2>
+    <div id="resumo-geral"></div>
+  </section>
+
+  <section id="pedidos-section">
+    <h2>Pedidos por Cliente</h2>
+    <div id="lista-pedidos"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
